@@ -47,36 +47,14 @@ for(let i = 0; i < carrito; i ++){
         while ((compra != viajeA.nombre) && (compra != viajeB.nombre) && (compra != viajeC.nombre) && (compra != viajeD.nombre))  {
         compra = prompt("Sus unicas opciones de ingreso son: \n"  + nombreViaje.join ("\n ")).toLowerCase()
         }
-    if (compra == viajeA.nombre){
-        let cantidad = parseInt(prompt("ingrese la cantidad de paquetes que desea comprar"))
-            while ((viajeA.lugares < cantidad) || ((isNaN(cantidad)) || cantidad < 1)) {
-                cantidad= parseInt(prompt("No ingrese letras, simbolos ni numeros inferiores a 1. \n \n No tenemos la cantidad deseada, la cantidad disponible es de " + viajeA.lugares))
-            }
-        carritoCompra(cantidad, viajeA)
-    }
-    else if (compra == viajeB.nombre) {
-        let cantidad = parseInt(prompt("ingrese la cantidad de paquetes que desea comprar"))
-            while ((viajeB.lugares < cantidad) || ((isNaN(cantidad)) || cantidad < 1)) {
-                cantidad= parseInt(prompt("No ingrese letras, simbolos ni numeros inferiores a 1. \n \n No tenemos la cantidad deseada, la cantidad disponible es de " + viajeA.lugares))
-            }
-        carritoCompra(cantidad, viajeB)
-    }
-    else if (compra == viajeC.nombre) {
-        let cantidad = parseInt(prompt("ingrese la cantidad de paquetes que desea comprar"))
-            while ((viajeC.lugares < cantidad) || ((isNaN(cantidad)) || cantidad < 1)) {
-                cantidad= parseInt(prompt("No ingrese letras, simbolos ni numeros inferiores a 1. \n \n No tenemos la cantidad deseada, la cantidad disponible es de " + viajeA.lugares))
-            }
-        carritoCompra(cantidad, viajeC)
-    }
-    else if (compra == viajeD.nombre) {
-        let cantidad = parseInt(prompt("ingrese la cantidad de paquetes que desea comprar"))
-            while ((viajeD.lugares < cantidad) || ((isNaN(cantidad)) || cantidad < 1)) {
-                cantidad= parseInt(prompt("No ingrese letras, simbolos ni numeros inferiores a 1. \n \n No tenemos la cantidad deseada, la cantidad disponible es de " + viajeA.lugares))
-            }
-        carritoCompra(cantidad, viajeD)
-    }
-    else{
-        alert("no tenemos ese paquete")
-    }
+    listaViajes.forEach( (viaje) => {
+            if (compra == viaje.nombre){
+                let cantidad = parseInt(prompt("ingrese la cantidad de paquetes que desea comprar"))
+                    while ((viaje.lugares < cantidad) || ((isNaN(cantidad)) || cantidad < 1)) {
+                        cantidad= parseInt(prompt("No ingrese letras, simbolos ni numeros inferiores a 1. \n \n No tenemos la cantidad deseada, la cantidad disponible es de " + viajeA.lugares))
+                    }
+                carritoCompra(cantidad, viaje)
+                }
+        })
 }
 alert("Este es precio total de su compra $ " + precioTotal)
