@@ -4,11 +4,15 @@ class Viaje {
         this.lugares = lugares
         this.precio = precio
         /*this.lugaresOcupados = function (cantidad) {this.lugares -= cantidad} (No se como implementar esto) */
+    }//se hace asi:
+    lugaresOcupados(cant) {
+        this.lugares -= cant
     }
 }
 
 /* me gustaria que el objeto tenga la propiedad fecha, pero no la puse porque cuando le pida al usuario no se como validar
 lo que pone ya que el texto tendria numeros y fechas, ej 10 de julio */
+//LA FECHA PARA QUE LA QUISIERAS? CON LO QUE VIMOS DE DOM: DESDE HTML CON INPUT TYPE=DATE ES MUUUCHO MAS FACIL!
 
 const viajeA = new Viaje("caribe", 20, 300000)
 const viajeB = new Viaje("roma", 35, 380000)
@@ -43,10 +47,23 @@ for(let i = 0; i < carrito; i ++){
 
     /* me gustaria que el while de compra se pueda hacer llamando a todo el array de una, no por cada 1 de los objetos
     como estoy haciendo ahora */
+    //PARA ESTO TENER QUE USAR FUNCIONES DE ORDEN SUPERIOR: RECOMENDACION: FILTER
     let compra = prompt("Ingrese el paquete de lo que desea comprar: \n " + nombreViaje.join ("\n ")).toLowerCase()
         while ((compra != viajeA.nombre) && (compra != viajeB.nombre) && (compra != viajeC.nombre) && (compra != viajeD.nombre))  {
         compra = prompt("Sus unicas opciones de ingreso son: \n"  + nombreViaje.join ("\n ")).toLowerCase()
-        }
+        } //LA FORMA SERIA LA SIGUIENTE
+            let pedido = "" //va a alojar la entrada del usuario
+            let pedidoEncontrado = {} //va a alojar el edido encontrado
+            do {
+                pedido == prompt("Ingrese el paquete de lo que desea comprar: \n " + nombreViaje.join ("\n ")).toLowerCase() //pido la entrada
+                console.log(pedido)
+                lpedidoEncontrado = listaViajes.filter(cadaViaje => cadaViaje.nombre.toLowerCase() === pedido.toLowerCase()) //filtro todos los que coincidan
+                console.log(pedidoEncontrado)
+                //te dejo los consoles para que veas los resultados
+                //pedidoEncontrado es un array y yo solo quiero el primer y unico elemento entonces:
+                pedidoEncontrado = pedidoEncontrado[0]
+            } while (!pedido) //mientras pedido no exista se repite la peticion
+
     listaViajes.forEach( (viaje) => {
             if (compra == viaje.nombre){
                 let cantidad = parseInt(prompt("ingrese la cantidad de paquetes que desea comprar"))
