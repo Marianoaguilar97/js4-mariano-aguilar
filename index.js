@@ -57,7 +57,7 @@ for(let i = 0; i < carrito; i ++){
             do {
                 pedido == prompt("Ingrese el paquete de lo que desea comprar: \n " + nombreViaje.join ("\n ")).toLowerCase() //pido la entrada
                 console.log(pedido)
-                lpedidoEncontrado = listaViajes.filter(cadaViaje => cadaViaje.nombre.toLowerCase() === pedido.toLowerCase()) //filtro todos los que coincidan
+                pedidoEncontrado = listaViajes.filter(cadaViaje => cadaViaje.nombre.toLowerCase() === pedido) //filtro todos los que coincidan
                 console.log(pedidoEncontrado)
                 //te dejo los consoles para que veas los resultados
                 //pedidoEncontrado es un array y yo solo quiero el primer y unico elemento entonces:
